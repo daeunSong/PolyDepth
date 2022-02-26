@@ -40,7 +40,8 @@
 
 #ifndef MODEL_H
 #define MODEL_H
-#include "C2A/LinearMath.h"
+#include "LinearMath.h"
+#include "MeshObject.h"
 
 struct ModelTri
 {

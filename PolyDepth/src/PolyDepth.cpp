@@ -1,5 +1,5 @@
-#include "PolyDepth/PolyDepth.h"
-#include "PolyDepthDemo/stopwatch.h"
+#include "PolyDepth.h"
+#include "stopwatch.h"
 #include <map>
 
 //#define LOCAL_PENETRATIION
@@ -297,9 +297,9 @@ PolyDepth(Transform*		object_1_pose,
 #endif
 	PQP_REAL toc;
 
-	StopwatchWin32 watch;
+	//StopwatchWin32 watch;
 
-	watch.Start();
+	//watch.Start();
 	global_penetration_depth.Set_Value(0.0, 0.0, 0.0);
 
 	int nItrs, NTr;
@@ -372,8 +372,8 @@ PolyDepth(Transform*		object_1_pose,
 	//C2A_Distance(&distance_test_result, temp_rot0, temp_tran0, object_1,
 	//	temp_rot1, temp_tran1, object_2, rel_err, abs_err);
 
-	watch.Stop();
-	printf("time to compute colliding status %f millisec\n", watch.GetTime()*1000.0);
+	//watch.Stop();
+	//printf("time to compute colliding status %f millisec\n", watch.GetTime()*1000.0);
 
 
 	if (!collide_result.Colliding()) {
@@ -389,7 +389,7 @@ PolyDepth(Transform*		object_1_pose,
 		return ret;
 	}
     //guess the free space 
-	watch.Start();
+	//watch.Start();
 	GuessContactFreeSpace(object_1_pose,
 					  object_1,
 					  object_2_pose,
@@ -398,8 +398,8 @@ PolyDepth(Transform*		object_1_pose,
 					  use_motion_coherance,
 					  use_max_clear_conf,
 					  begin_transform_object_1);
-	watch.Stop();
-	printf("time to compute contact free space %f\n", watch.GetTime()*1000.0);
+	//watch.Stop();
+	//printf("time to compute contact free space %f\n", watch.GetTime()*1000.0);
 
 	PQP_REAL max_bbox_size = sqrt(object_2->b->d[0] * object_2->b->d[0] + 
 								  object_2->b->d[1] * object_2->b->d[1] + 
@@ -719,11 +719,11 @@ PolyDepth(Transform*		object_1_pose,
 	prj.Get_Value(save_tran_vector);
 
 
-	watch.Start();
+	//watch.Start();
 	C2A_Distance(&distance_test_result, save_rot_matrix, save_tran_vector, object_1,
 				  temp_rot1,temp_tran1, object_2,rel_err, abs_err);
-	watch.Stop();
-	printf("time to compute distance %f\n", watch.GetTime() * 1000.0);
+	//watch.Stop();
+	//printf("time to compute distance %f\n", watch.GetTime() * 1000.0);
 
 	if (distance_test_result.Distance() < absolute_contact_configuration) {
 		if(distance_test_result.Distance() > 0.0) {
@@ -1071,9 +1071,9 @@ SkinDepth(Transform*		object_1_pose,
 	printf("\n PolyDepth \n");
 #endif
 
-	StopwatchWin32 watch;
+	//StopwatchWin32 watch;
 
-	watch.Start();
+	//watch.Start();
 	global_penetration_depth.Set_Value(0.0, 0.0, 0.0);
 
 
@@ -1565,8 +1565,8 @@ bool FindMaximallyClearConfigure(const std::vector<Coord3D>& object_vertices,
 	ifcdis.resize(j);
 	ifcfac.resize(j);
 
-	// 남아있는 configuration 들 사이의 비교를 통한 제거
-	// 두 개의 configuration 의 거리값 중 큰 것이 두 configuration 사이의 거리값보다 크면 거리값이 작은 configuration을 제거한다
+	// \B3\B2\BE\C6\C0獵\C2 configuration \B5\E9 \BB\E7\C0\CC\C0\C7 \BA呪낯\A6 \C5\EB\C7\D1 \C1\A6\B0\C5
+	// \B5\CE \B0\B3\C0\C7 configuration \C0\C7 \B0타\AE\B0\AA \C1\DF 큰 \B0\CD\C0\CC \B5\CE configuration \BB\E7\C0\CC\C0\C7 \B0타\AE\B0\AA\BA\B8\B4\D9 크\B8\E9 \B0타\AE\B0\AA\C0\CC \C0\DB\C0\BA configuration\C0\BB \C1\A6\B0\C5\C7磯\D9
 
 	for (j = 0; j < ifconf.size() ; j++)
 	{
@@ -1599,7 +1599,7 @@ bool FindMaximallyClearConfigure(const std::vector<Coord3D>& object_vertices,
 
 	tmdb2 = sqrt(unitt * unitt * 2);
 
-	// AABB의 8개 꼭지점 근처에 있는 configuration들을 제거한다
+	// AABB\C0\C7 8\B0\B3 \B2\C0\C1\F6\C1\A1 \B1\D9처\BF\A1 \C0獵\C2 configuration\B5\E9\C0\BB \C1\A6\B0\C5\C7磯\D9
 	for (j = 0; j < ifconf.size(); j++)
 	{
 		if(ifcfac[j]) {

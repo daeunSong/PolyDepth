@@ -1,5 +1,7 @@
-#include "PolyDepth/MeshObject.h"
-#include <gl/gl.h>
+#include "MeshObject.h"
+#include <GL/glut.h>
+#include <cstring>
+using namespace std;
 //
 
 inline

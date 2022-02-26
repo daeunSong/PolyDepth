@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include <C2A/LinearMath.h>
+#include <LinearMath.h>
 
 
 

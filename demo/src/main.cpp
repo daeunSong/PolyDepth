@@ -4,13 +4,13 @@
 #include <GL/glut.h>
 #include "PQP.h"
 #include "MatVec.h"
-#include "Stopwatch.h"
+#include "stopwatch.h"
 #include <iostream>
 #include <fstream>
-#include "C2A/LinearMath.h"
-#include "C2A/C2A.h"
-#include <PolyDepth/PolyDepth.h>
-#include <PolyDepth/MeshObject.h>
+#include "LinearMath.h"
+#include "C2A.h"
+#include <PolyDepth.h>
+#include <MeshObject.h>
 
 
 #include "main.h"
@@ -20,7 +20,7 @@ int height=960;
 
 bool Flag_New=0;
 
-StopwatchWin32 timer;
+//StopwatchWin32 timer;
 float timing;
 
 int animating = 1;
@@ -46,8 +46,8 @@ int* feature_ids;
 
 
 // good
-static const char* modelFile1 = "../tri_models/bunny_noholes.tri";
-static const char* modelFile2 = "../tri_models/bunny_noholes.tri";
+static const char* modelFile1 = "../models/bunny_noholes.tri";
+static const char* modelFile2 = "../models/bunny_noholes.tri";
 
 static const char* aniPath2 = "../models/bunny40k_1.ani";
 static const char* aniPath1 = "../models/bunny40k_2.ani";
@@ -245,8 +245,8 @@ cb_display()//Display
 	
 
 
-	timer.Reset(); 
-	timer.Start();
+//	timer.Reset();
+//	timer.Start();
 
     nItr=0;
 
@@ -275,8 +275,8 @@ cb_display()//Display
 	}
 	
 
-	timer.Stop();
-	tframes[iframe]=timer.GetTime()/nTests;
+//	timer.Stop();
+//	tframes[iframe]=timer.GetTime()/nTests;
 	GlobalPD[iframe] = global_penetration_depth;
 	nIter[iframe]=nItr;
 
@@ -328,7 +328,7 @@ cb_display()//Display
 	  glutPostRedisplay();
 }
 
-void main(int argc, char **argv)
+int main(int argc, char **argv)
 {
   // init glut
 

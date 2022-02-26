@@ -140,7 +140,7 @@ void StopwatchBase::SetName(const char *s)
  */
 void StopwatchBase::SetName(int id)
 {
-  sprintf_s(sw_name, "%d", id);
+  sprintf(sw_name, "%d", id);
 }
 
 /**
@@ -195,32 +195,32 @@ float StopwatchGeneric::diffTime() const
 // Gettimeofday Wall Clock Implementation -- works on most unix flavors
 //------------------------------------------------------------------------------
 
-#ifndef _WIN32
-static char gtodType[] = "UNIX wall clock (gettimeofday())";
-StopwatchGTOD::StopwatchGTOD(const char *name)
-  : StopwatchBase(name)
-{
-  sw_type = gtodType;
-}
-
-StopwatchGTOD::~StopwatchGTOD()
-{
-}
-
-void StopwatchGTOD::markTime()
-{
-  gettimeofday(&lastStamp, NULL);
-}
-
-float StopwatchGTOD::diffTime() const
-{
-  struct timeval newStamp;
-  gettimeofday(&newStamp, NULL);
-  return
-    (((double)newStamp.tv_sec) + ((double)newStamp.tv_usec / 1e6f)) 
-    - (((double)lastStamp.tv_sec) + ((double)lastStamp.tv_usec / 1e6f));
-}
-#endif /* !_WIN32 */
+//#ifndef _WIN32
+//static char gtodType[] = "UNIX wall clock (gettimeofday())";
+//StopwatchGTOD::StopwatchGTOD(const char *name)
+//  : StopwatchBase(name)
+//{
+//  sw_type = gtodType;
+//}
+//
+//StopwatchGTOD::~StopwatchGTOD()
+//{
+//}
+//
+//void StopwatchGTOD::markTime()
+//{
+//  gettimeofday(&lastStamp, NULL);
+//}
+//
+//float StopwatchGTOD::diffTime() const
+//{
+//  struct timeval newStamp;
+//  gettimeofday(&newStamp, NULL);
+//  return
+//    (((double)newStamp.tv_sec) + ((double)newStamp.tv_usec / 1e6f))
+//    - (((double)lastStamp.tv_sec) + ((double)lastStamp.tv_usec / 1e6f));
+//}
+//#endif /* !_WIN32 */
 
 //------------------------------------------------------------------------------
 // SuperFast Hardware SGI Wall Clock Implementation -- SGI Only (duh)
@@ -248,7 +248,7 @@ float StopwatchSGI::diffTime() const
   timespec_t newStamp;
   clock_gettime(CLOCK_SGI_CYCLE,&newStamp);
   return
-    (((double)newStamp.tv_sec) + ((double)newStamp.tv_nsec / 1e9)) 
+    (((double)newStamp.tv_sec) + ((double)newStamp.tv_nsec / 1e9))
     - (((double)lastStamp.tv_sec) + ((double)lastStamp.tv_nsec / 1e9));
 }
 #endif /* CLOCK_SGI_CYCLE */

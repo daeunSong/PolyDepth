@@ -1,10 +1,10 @@
 #ifndef __MeshObject_h
 #define __MeshObject_h
 
-#include <C2A/LinearMath.h>
-#include <C2A/C2A.h>
+#include <LinearMath.h>
+#include <C2A.h>
 #include <vector>
-#include "PolyDepth/PolyDepth.h"
+#include "PolyDepth.h"
 
 
 struct ModelTriNew

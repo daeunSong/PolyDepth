@@ -26,10 +26,10 @@
 
 #include <vector>
 
-#include <C2A/C2A.h>
-#include <C2A/InterpMotion.h>
-#include <C2A/LinearMath.h>
-#include "PolyDepth/ClearConfiguration.h"
+#include <C2A.h>
+#include <InterpMotion.h>
+#include <LinearMath.h>
+#include "ClearConfiguration.h"
 
 enum PolyDepthResult {
 	kNoPenetration,

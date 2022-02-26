@@ -46,6 +46,34 @@
 
 
 
+inline
+void
+VmV(PQP_REAL Vr[3], const PQP_REAL V1[3], const PQP_REAL V2[3])
+{
+  Vr[0] = V1[0] - V2[0];
+  Vr[1] = V1[1] - V2[1];
+  Vr[2] = V1[2] - V2[2];
+}
+
+inline
+void
+VcrossV(PQP_REAL Vr[3], const PQP_REAL V1[3], const PQP_REAL V2[3])
+{
+  Vr[0] = V1[1]*V2[2] - V1[2]*V2[1];
+  Vr[1] = V1[2]*V2[0] - V1[0]*V2[2];
+  Vr[2] = V1[0]*V2[1] - V1[1]*V2[0];
+}
+
+inline
+void
+Vnormalize(PQP_REAL V[3])
+{
+  PQP_REAL d = 1.0 / sqrt(V[0]*V[0] + V[1]*V[1] + V[2]*V[2]);
+  V[0] *= d;
+  V[1] *= d;
+  V[2] *= d;
+}
+
 Model::Model(const char *tris_file)
 {
   FILE *fp = fopen(tris_file,"r");
