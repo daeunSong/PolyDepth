@@ -11,21 +11,25 @@ To run the code, VC++ 9.0 or higher is needed.
 
 ## Dependencies
 
-To run PolyDepth, two libraries are needed, **PQP** and **C2A**.
+1. Install dependencies
+```sh
+xargs -a packages.txt sudo apt-get install
+```
 
-1. Please download PQP at [here](https://github.com/GammaUNC/PQP).
+2. Clone **PQP** and **C2A**
+```sh
+git clone -b cmake https://github.com/daeunSong/C2A.git
+cd C2A
+git clone https://github.com/daeunSong/PQP.git
+```
 
-
-2. Copy all contents of PQP to a new folder named `PQP` in the root path.
-
-
-3. Please download C2A at [here](https://github.com/EwhaGlab/C2A).
-
-
-4. Copy only the C2A folder into the root path.
-
-
-5. Copy the files PQP.sln and PQP.vcproj into PQP folder.
+3. Build and Compile
+```sh
+cd ..
+mkdir build && cd build
+cmake ..
+make -j4
+```
 
 
 ## About the project
